@@ -16,7 +16,6 @@ get_key:
     jmp .exit
 .entr:
     call execute_prompt
-    inc dh
     mov dl, 0
     mov si, buffer
     mov al, buf_len

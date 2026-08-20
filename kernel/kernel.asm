@@ -9,6 +9,10 @@ jmp main
 %include "data.asm"
 
 main:
+    mov ax, 0x1000
+    mov ds, ax
+
+    ;start kernel
     mov ah, 10h
     call init_screen
     mov si, company

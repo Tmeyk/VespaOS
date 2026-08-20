@@ -22,6 +22,7 @@ compare_strings:
     pop cx
     ret
 .equal:
+    mov al, 0
     pop di
     pop si
     pop cx
