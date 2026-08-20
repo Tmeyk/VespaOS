@@ -1,3 +1,13 @@
+[org 0]
+bits 16
+jmp main
+
+%include "screen.asm"
+%include "shell.asm"
+%include "keyboard.asm"
+%include "string.asm"
+%include "data.asm"
+
 main:
     mov ah, 10h
     call init_screen
