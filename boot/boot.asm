@@ -3,7 +3,7 @@
 bits 16
 
     mov ah, 02h
-    mov al, 02h ;how many sectors?
+    mov al, 03h ;how many sectors?
     mov ch, 00h
     mov cl, 02h
     mov dh, 00h
