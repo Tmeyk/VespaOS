@@ -143,4 +143,22 @@ read_char:
     pop bx
     ret
 
-
+print_hex:
+    ;al - hex to print
+    push bx
+    push cx
+    push si
+    mov si, hex
+    mov [si], "0"
+    inc si
+    mov [si], "x"
+    inc si
+    mov cx, 2
+.loop
+    mov bl, 16
+    div bl
+    mov [si], ah
+    inc si
+    loop .loop
+    mov si, hex
+    call print

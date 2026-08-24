@@ -14,6 +14,7 @@ helptxt db "Available commands:", 0ah, "reboot (-d) - reboots system", 0ah, "hi 
 
 ;variables and statics
 scroll_pages db 1 ;0 - scroll, 1 - pages
+char_hex db 0 ;0 - char, 1 - hex
 
 ;prompts
 prompt_reboot db "reboot", 0
@@ -28,3 +29,4 @@ prompt_help db "help", 0
 buffer resb 24
 buf_len equ $ - buffer
 line resw 80
+hex resb 4
