@@ -10,7 +10,7 @@ hello   db "Hello from VespaOS!", 0
 version db "version: ", 0
 author  db "author: Tmeyk", 0
 website db "website: www.vespaos.com (in future)", 0
-helptxt db "Available commands:", 0ah, "reboot (-d) - reboots system", 0ah, "hi - welcome with system", 0ah, "vespa - information about Your VespaOS", 0ah, "scrollset -s - sets scrolling mode", 0ah, "scrollset -p - sets paging mode", 0ah, "help - prints this help information", 0
+helptxt db "Available commands:", 0ah, "reboot (-d) - reboots system", 0ah, "hi - welcome with system", 0ah, "vespa - information about Your VespaOS", 0ah, "scrollset -s - sets scrolling mode", 0ah, "scrollset -p - sets paging mode", 0ah, "printset (-h/-c) - sets input printing style", 0ah, "help - prints this help information", 0
 
 ;variables and statics
 scroll_pages db 1 ;0 - scroll, 1 - pages
@@ -24,6 +24,8 @@ prompt_vespa db "vespa", 0
 prompt_scroll db "scrollset -s", 0
 prompt_pages db "scrollset -p", 0
 prompt_help db "help", 0
+prompt_prnthex db "printset -h", 0
+prompt_prntchar db "printset -c", 0
 
 ;bss
 buffer resb 24
