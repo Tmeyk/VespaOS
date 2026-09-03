@@ -78,11 +78,12 @@ execute_prompt:
     call print_help
     ret
 .char:
-    mov byte [hex_char], 1
+    mov byte [char_hex], 0
     ret
 .hex:
-    mov byte [hex_char], 0
+    mov byte [char_hex], 1
     ret
+
 
 reboot:
     int 19h
