@@ -157,14 +157,15 @@ print_hex:
 .loop
     mov bl, 16
     div bl
-    cmp al, 9
+    cmp ah, 9
     ja .above
-    add al, 30h
-    mov [si], al
+    add ah, 30h
+    mov [si], ah
     inc si
+.cntnue:
     loop .loop
     mov si, hex
-    ret
+    call print_string
 .above:
-    add al, 
-    call print
+    add al, 36h
+    jmp .cntnue
