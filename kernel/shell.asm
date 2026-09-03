@@ -38,6 +38,14 @@ execute_prompt:
         call compare_strings
         cmp al, 0
         je .help
+    mov di, prompt_prntchar
+        call compare_strings
+        cmp al, 0
+        je .char
+    mov di, prompt_prnthex
+        call compare_strings
+        cmp al, 0
+        he .hex
     mov si, nexist
     mov ah, 1ah
     inc dh
@@ -68,6 +76,12 @@ execute_prompt:
     ret
 .help:
     call print_help
+    ret
+.char:
+    mov byte [hex_char], 1
+    ret
+.hex:
+    mov byte [hex_char], 0
     ret
 
 reboot:
