@@ -157,8 +157,14 @@ print_hex:
 .loop
     mov bl, 16
     div bl
-    mov [si], ah
+    cmp al, 9
+    ja .above
+    add al, 30h
+    mov [si], al
     inc si
     loop .loop
     mov si, hex
+    ret
+.above:
+    add al, 
     call print
