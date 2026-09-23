@@ -154,7 +154,7 @@ print_hex:
     mov [si], "x"
     inc si
     mov cx, 2
-.loop
+.lop
     mov bl, 16
     div bl
     cmp ah, 9
@@ -163,7 +163,7 @@ print_hex:
     mov [si], ah
     inc si
 .cntnue:
-    loop .loop
+    loop .lop
     mov si, hex
     call print_string
 .above:

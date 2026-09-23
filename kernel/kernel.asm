@@ -12,6 +12,7 @@ main:
     mov ax, 0x1000
     mov ds, ax
 
+    ;//TODO: move into 32-bit mode
     ;start kernel
     mov ah, 10h
     call init_screen
@@ -61,6 +62,7 @@ main:
     mov [si], al
     inc si
     ;print entered char
+    ;//TODO: add handling for hex printing
     mov ah, 1fh
     call print_char
     mov ah, 02h
@@ -79,7 +81,7 @@ main:
     mov ah, 02h
     int 10h ;move cursor
     jmp .loop
-.backspace:
+.backspace: ;//FIXME: bakspace erase char from syspath 
     dec dl
     mov ax, 1f00h
     call print_char ;print empty label

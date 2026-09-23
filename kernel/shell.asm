@@ -45,7 +45,7 @@ execute_prompt:
     mov di, prompt_prnthex
         call compare_strings
         cmp al, 0
-        he .hex
+        je .hex
     mov si, nexist
     mov ah, 1ah
     inc dh

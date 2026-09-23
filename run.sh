@@ -1,1 +1,1 @@
-qemu-system-x86_64.exe -drive format=raw,file="$(wslpath -w ~/VespaOS/build/os.img)"
+qemu-system-x86_64 -drive format=raw,file="../build/os.img"
