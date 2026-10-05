@@ -144,28 +144,39 @@ read_char:
     ret
 
 print_hex:
-    ;al - hex to print
+    ;al - byte to print
+    ;ah - character style
+    ;dh, dl - row and column; dl is advanced by four characters
     push bx
-    push cx
-    push si
-    mov si, hex
-    mov [si], "0"
-    inc si
-    mov [si], "x"
-    inc si
-    mov cx, 2
-.lop
-    mov bl, 16
-    div bl
-    cmp ah, 9
-    ja .above
-    add ah, 30h
-    mov [si], ah
-    inc si
-.cntnue:
-    loop .lop
-    mov si, hex
-    call print_string
-.above:
-    add al, 36h
-    jmp .cntnue
+    mov bl, al
+
+    mov al, '0'
+    call print_char
+    inc dl
+    mov al, 'x'
+    call print_char
+    inc dl
+
+    mov al, bl
+    shr al, 4
+    call .digit
+    call print_char
+    inc dl
+
+    mov al, bl
+    and al, 0fh
+    call .digit
+    call print_char
+    inc dl
+
+    pop bx
+    ret
+
+.digit:
+    cmp al, 9
+    jbe .number
+    add al, 'A' - 10
+    ret
+.number:
+    add al, '0'
+    ret

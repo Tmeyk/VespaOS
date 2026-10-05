@@ -54,6 +54,7 @@ main:
     mov si, buffer
 .loop:
     call get_key
+    ;// TODO: add ctrl+backspace handling
     cmp al, 0dh ;if enter
     je .entr
     cmp al, 08h ;if backspace
@@ -62,11 +63,18 @@ main:
     mov [si], al
     inc si
     ;print entered char
-    ;//TODO: add handling for hex printing
+    cmp byte [char_hex], 0
+    je .char
+    mov al, ah
+    mov ah, 1fh
+    call print_hex
+    jmp .set_coursor
+.char:
     mov ah, 1fh
     call print_char
-    mov ah, 02h
     inc dl
+.set_coursor:
+    mov ah, 02h
     int 10h ;move cursor
     jmp .loop
 .entr:
@@ -81,7 +89,7 @@ main:
     mov ah, 02h
     int 10h ;move cursor
     jmp .loop
-.backspace: ;//FIXME: bakspace erase char from syspath 
+.backspace: ;//FIXME: backspace erases *everything
     dec dl
     mov ax, 1f00h
     call print_char ;print empty label

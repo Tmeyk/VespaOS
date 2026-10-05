@@ -8,7 +8,7 @@ print_path:
     pop si
     ret
 
-execute_prompt:
+execute_prompt: ;//TODO: add empty buffer handling
     mov si, buffer
     mov di, prompt_reboot
         call compare_strings
