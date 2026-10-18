@@ -7,6 +7,8 @@ jmp main
 %include "keyboard.asm"
 %include "string.asm"
 %include "data.asm"
+%include "array.asm"
+%include "keysdict.asm"
 
 main:
     mov ax, 0x1000
@@ -54,6 +56,9 @@ main:
     mov si, buffer
 .loop:
     call get_key
+    mov cx, keys_dict_size
+    mov si, scanCodes
+    call read_as_dict
     ;// TODO: add ctrl+backspace handling
     cmp al, 0dh ;if enter
     je .entr

@@ -1,6 +1,10 @@
 get_key:
-    mov ah, 0
-    int 16h
+    ;al - key pressed
+    in al, 0x64
+    test al, 1
+    jz get_key
+    in al, 0x60
+    mov ah, al
     ret
 
 clear_buffer:

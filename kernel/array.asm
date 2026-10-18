@@ -2,17 +2,16 @@ read_as_array:
     ;ah - index to read (0off - 1st element)
     ;si - array adress
     ;ret ah - value readed
-    add si, ah
+    movzx ax, ah
+    add si, ax
     mov ah, [si]
     ret
 
 read_as_dict:
     ;ah - key to read
-    ;al - size of dict
+    ;cx - size of dict
     ;si - dict adress
-    ;ret ah - value readed
-    push cx
-    movzx cx, al
+    ;ret al - value readed
 .loop:
     or cx, cx
     jz .exit
@@ -22,7 +21,7 @@ read_as_dict:
     loop .loop
 .value:
     inc si
-    mov ah, [si]
+    mov al, [si]
     ret
 .exit:
     ;//TODO: add not found flag handling

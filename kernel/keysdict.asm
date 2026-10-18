@@ -1,18 +1,18 @@
 ;Dictionary of keyboard ScanCodes with letters for keyboard driver 
 scanCodes:
-db  0x02, 1
-db  0x03, 2
-db  0x04, 3
-db  0x05, 4
-db  0x06, 5
-db  0x07, 6
-db  0x08, 7
-db  0x09, 8
-db  0x0A, 9
-db  0x0B, 0
+db  0x02, '1'
+db  0x03, '2'
+db  0x04, '3'
+db  0x05, '4'
+db  0x06, '5'
+db  0x07, '6'
+db  0x08, '7'
+db  0x09, '8'
+db  0x0A, '9'
+db  0x0B, '0'
 db  0x0C, '-'
 db  0x0D, '='
-db  0x0E, 0 ;backspace
+db  0x0E, 08h ;backspace
 db  0x0F, 0 ;tab
 db  0x10, 'q'
 db  0x11, 'w'
@@ -26,7 +26,7 @@ db  0x18, 'o'
 db  0x19, 'p'
 db  0x1A, '['
 db  0x1B, ']'
-db  0x1C, 0 ;enter
+db  0x1C, 0dh ;enter
 db  0x1D, 0 ;left ctrl
 db  0x1E, 'a'
 db  0x1F, 's'
@@ -82,3 +82,4 @@ db  0x50, 0 ;down arrow
 db  0x51, 0 ;page down
 db  0x52, 0 ;insert
 db  0x53, 0 ;delete
+keys_dict_size dw $ - scanCodes
